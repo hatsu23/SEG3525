@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appointment Booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: white;
+    }
+    .btn-red {
+      background-color: #b91c1c; 
+      color: white;
+    }
+    .btn-red:hover {
+      background-color: #7f1d1d;
+    }
+    .btn-black {
+      background-color: black;
+      color: white;
+    }
+    .btn-black:hover {
+      background-color: #111827; 
+    }
+    .selected-time {
+      background-color: #b91c1c !important;
+      color: white !important;
+    }
+    .selected-haircut {
+      background-color: #fee2e2; 
+      border-color: #b91c1c;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const timeButtons = document.querySelectorAll("button[data-time]");
+      let selectedTime = null;
+      timeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          if (selectedTime) {
+            selectedTime.classList.remove("selected-time");
+          }
+          selectedTime = button;
+          button.classList.add("selected-time");
+          document.querySelector("#selectedTime").value = button.getAttribute("data-time");
+        });
+      });
+
+      const haircutInputs = document.querySelectorAll('input[name="haircut"]');
+      haircutInputs.forEach(input => {
+        const label = input.closest("label");
+        label.addEventListener("click", () => {
+          haircutInputs.forEach(i => {
+            const parent = i.closest("label");
+            parent.classList.remove("selected-haircut", "ring-2", "ring-red-700");
+          });
+          label.classList.add("selected-haircut", "ring-2", "ring-red-700");
+          input.checked = true;
+        });
+      });
+    });
+  </script>
+</head>
+<body class="bg-white">
+  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
+    <h1 class="text-3xl font-bold mb-4 text-center uppercase tracking-wide text-black">Appointment Booking</h1>
+    <p class="text-center text-gray-700 mb-8">Select a date, time, and haircut that fits you</p>
+
+    <form class="space-y-6" action="success.html" method="GET">
+      <div class="border rounded-xl p-4 bg-gray-50">
+        <h2 class="text-lg font-semibold mb-3 text-black">Your Information</h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block font-semibold mb-1 text-black">Name</label>
+            <input name="name" type="text" class="w-full border px-3 py-2 rounded" required />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1 text-black">Email</label>
+            <input name="email" type="email" class="w-full border px-3 py-2 rounded" required />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1 text-black">Phone Number</label>
+            <input name="phone" type="tel" class="w-full border px-3 py-2 rounded" required />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1 text-black">Date</label>
+        <input name="date" type="date" class="w-full border px-3 py-2 rounded bg-white" required />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1 text-black">Time</label>
+        <input type="hidden" name="selectedTime" id="selectedTime" required />
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" data-time="09:00 AM" class="border px-2 py-1 rounded bg-white">09:00 AM</button>
+          <button type="button" data-time="10:00 AM" class="border px-2 py-1 rounded bg-white">10:00 AM</button>
+          <button type="button" data-time="11:00 AM" class="border px-2 py-1 rounded bg-white">11:00 AM</button>
+          <button type="button" data-time="12:00 PM" class="border px-2 py-1 rounded bg-white">12:00 PM</button>
+          <button type="button" data-time="01:00 PM" class="border px-2 py-1 rounded bg-white">01:00 PM</button>
+          <button type="button" data-time="02:00 PM" class="border px-2 py-1 rounded bg-white">02:00 PM</button>
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-2 text-black">Haircuts</label>
+        <div class="grid grid-cols-2 gap-4">
+          <label class="border p-4 rounded-xl cursor-pointer transition duration-200 hover:shadow-md bg-white">
+            <input type="radio" name="haircut" value="Classic Haircut" class="hidden" required />
+            <div class="font-semibold text-lg mb-1 text-black">Classic Haircut</div>
+            <div class="text-sm text-gray-600 mb-2">A traditional haircut tailored to your preferences</div>
+            <div class="font-bold text-gray-800">$25</div>
+          </label>
+
+          <label class="border p-4 rounded-xl cursor-pointer transition duration-200 hover:shadow-md bg-white">
+            <input type="radio" name="haircut" value="Crew Cut" class="hidden" />
+            <div class="font-semibold text-lg mb-1 text-black">Crew Cut</div>
+            <div class="text-sm text-gray-600 mb-2">A short, tapered cut that is easy to maintain</div>
+            <div class="font-bold text-gray-800">$20</div>
+          </label>
+
+          <label class="border p-4 rounded-xl cursor-pointer transition duration-200 hover:shadow-md bg-white">
+            <input type="radio" name="haircut" value="Fade" class="hidden" />
+            <div class="font-semibold text-lg mb-1 text-black">Fade</div>
+            <div class="text-sm text-gray-600 mb-2">A modern haircut with a gradual transition in length</div>
+            <div class="font-bold text-gray-800">$30</div>
+          </label>
+
+          <label class="border p-4 rounded-xl cursor-pointer transition duration-200 hover:shadow-md bg-white">
+            <input type="radio" name="haircut" value="Buzz Cut" class="hidden" />
+            <div class="font-semibold text-lg mb-1 text-black">Buzz Cut</div>
+            <div class="text-sm text-gray-600 mb-2">A very short cut achieved with clippers</div>
+            <div class="font-bold text-gray-800">$15</div>
+          </label>
+
+          <label class="border p-4 rounded-xl cursor-pointer transition duration-200 hover:shadow-md bg-white col-span-2">
+            <input type="radio" name="haircut" value="Custom Haircut" class="hidden" />
+            <div class="font-semibold text-lg mb-1 text-black">Custom Haircut</div>
+            <div class="text-sm text-gray-600 mb-2">Haircut specially adapted for your head and needs</div>
+            <div class="font-bold text-gray-800">$15 - $45</div>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="w-full btn-red py-3 rounded-lg transition">Book Appointment</button>
+    </form>
+  </div>
+</body>
+</html>
