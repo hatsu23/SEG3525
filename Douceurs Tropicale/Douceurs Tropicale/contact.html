@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact us</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: white;
+    }
+    .btn-red {
+      background-color: #b91c1c;
+      color: white;
+    }
+    .btn-red:hover {
+      background-color: #7f1d1d;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="max-w-xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
+    <h1 class="text-3xl font-bold mb-4 text-center uppercase tracking-wide text-black">Contact us</h1>
+    <p class="text-center text-gray-700 mb-8">Fill the form to send us a message</p>
+
+    <form class="space-y-6" action="merci.html" method="POST">
+      <div class="space-y-4">
+        <div>
+          <label class="block font-semibold mb-1 text-black">Name</label>
+          <input name="name" type="text" class="w-full border px-3 py-2 rounded" required />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-black">Email</label>
+          <input name="email" type="email" class="w-full border px-3 py-2 rounded" required />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-black">Phone number</label>
+          <input name="phone" type="tel" class="w-full border px-3 py-2 rounded" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1 text-black">Message</label>
+          <textarea name="message" rows="5" class="w-full border px-3 py-2 rounded" placeholder="Write your message here..." required></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="w-full btn-red py-3 rounded-lg transition">Send the message</button>
+    </form>
+
+    <div class="mt-10 border-t pt-6 text-center text-gray-700">
+      <p class="font-semibold text-black mb-2">Or contact us directly :</p>
+      <p><strong>Phone :</strong> <a href="tel:+15145551234" class="text-red-700 hover:underline">+1 514-555-1234</a></p>
+      <p><strong>Email :</strong> <a href="mailto:DouceursTropicale@exemple.com" class="text-red-700 hover:underline">DouceursTropicale@exemple.com</a></p>
+    </div>
+  </div>
+</body>
+</html>
