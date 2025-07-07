@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contactez-nous</title>
-  <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
@@ -20,28 +19,6 @@
   </style>
 </head>
 <body class="bg-white">
-<div class="navbar">
-  <div class="Logo">
-    <li><a href="indexfr.html"><img src="Logo.png" alt="Home"></a></li>
-  </div>
-  <ul>
-    <li><a href="indexfr.html"><img src="home.png" alt="Accueil">Accueil</a></li>
-    <li><a href="menufr.html"><img src="menu.png" alt="Menu">Menu</a></li>
-    <li><a href="aboutfr.html"><img src="info.png" alt="À propos">À propos</a></li>
-    <li><a href="contactfr.html"><img src="contact.png" alt="Contact">Contact</a></li>
-    <li class="dropdown">
-      <a href="orderfr.html"><img src="order.png" alt="Commandes">Commandes</a>
-      <div class="dropdown-content">
-        <a href="myordersfr.html"><img src="shopping-cart.png" alt="Mes Commandes">Mes Commandes</a>
-      </div>
-    </li>
-  </ul>
-  <div class="language-selector">
-    <button><a href="index.html" alt="Home">EN</a></button>
-    <button><a href="indexfr.html" alt="Home">FR</a></button>
-  </div>
-</div>
-
   <div class="max-w-xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
     <h1 class="text-3xl font-bold mb-4 text-center uppercase tracking-wide text-black">Contactez-nous</h1>
     <p class="text-center text-gray-700 mb-8">Remplissez le formulaire ci-dessous pour nous envoyer un message</p>
@@ -50,23 +27,23 @@
       <div class="space-y-4">
         <div>
           <label class="block font-semibold mb-1 text-black">Nom</label>
-          <input name="Nom" type="text" class="w-full border px-3 py-2 rounded" required />
+          <input name="name" type="text" class="w-full border px-3 py-2 rounded" required />
         </div>
         <div>
           <label class="block font-semibold mb-1 text-black">Adresse courriel</label>
-          <input name="Adresse courriel" type="email" class="w-full border px-3 py-2 rounded" required />
+          <input name="email" type="email" class="w-full border px-3 py-2 rounded" required />
         </div>
         <div>
           <label class="block font-semibold mb-1 text-black">Numéro de téléphone</label>
-          <input name="Numéro de téléphone" type="tel" class="w-full border px-3 py-2 rounded" />
+          <input name="phone" type="tel" class="w-full border px-3 py-2 rounded" />
         </div>
         <div>
           <label class="block font-semibold mb-1 text-black">Message</label>
-          <textarea name="Message" rows="5" class="w-full border px-3 py-2 rounded" placeholder="Écrivez votre message ici..." required></textarea>
+          <textarea name="message" rows="5" class="w-full border px-3 py-2 rounded" placeholder="Écrivez votre message ici..." required></textarea>
         </div>
       </div>
 
-      <button type="Envoyer le message" class="w-full btn-red py-3 rounded-lg transition">Envoyer le message</button>
+      <button type="submit" class="w-full btn-red py-3 rounded-lg transition">Envoyer le message</button>
     </form>
 
     <div class="mt-10 border-t pt-6 text-center text-gray-700">

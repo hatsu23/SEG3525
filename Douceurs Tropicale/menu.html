@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Douceur Tropicale</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .menu-controls select {
+            padding: 8px 12px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .menu-item {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .menu-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .menu-item:hover .menu-description {
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu-item {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+
+            .menu-item img {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="Logo">
+            <li><a href="index.html"><img src="Logo.png" alt="Home"></a></li>
+        </div>
+        <ul>
+            <li><a href="index.html"><img src="home.png" alt="Home">Home</a></li>
+            <li><a href="menu.html"><img src="menu.png" alt="Menu">Menu</a></li>
+            <li><a href="about.html"><img src="info.png" alt="About">About</a></li>
+            <li><a href="contact.html"><img src="contact.png" alt="Contact">Contact</a></li>
+            <li class="dropdown">
+                <a href="order.html"><img src="order.png" alt="Order">Order</a>
+                <div class="dropdown-content">
+                    <a href="myorders.html"><img src="shopping-cart.png" alt="Myorders">My Order(s)</a>
+                </div>
+            </li>
+        </ul>
+        <div class="language-selector">
+            <button><a href="menu.html" alt="Menu">EN</a></button>
+            <button><a href="menufr.html" alt="Menu">FR</a></button>   
+        </div>
+    </div>
+
+    <section class="menu">
+        <h1>Menu</h1>
+
+        <div class="menu-controls">
+            <label for="originFilter">Filter by origin:</label>
+            <select id="originFilter" onchange="filterMenu()">
+                <option value="all">All</option>
+                <option value="asie">Asia</option>
+                <option value="afrique">Africa</option>
+                <option value="amerique">Latin America</option>
+                <option value="europe">Europe</option>
+            </select>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Douceur Tropicale. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const items = [
+            { img: "Pasteís de Nata.png", desc: "Portuguese custard tart with a golden top", origin: "europe" },
+            { img: "Baklava.jpg", desc: "Nut and honey-filled phyllo pastry from the Middle East", origin: "asie" },
+            { img: "mochi.jpg", desc: "Japanese glutinous rice cake with sweet filling", origin: "asie" },
+            { img: "Knafeh.jpg", desc: "Crunchy angel hair pastry with melted cheese", origin: "asie" },
+            { img: "Gulab Jamun.webp", desc: "Indian milk-based dumplings soaked in rose syrup", origin: "asie" },
+            { img: "Churros con Chocolate.webp", desc: "Spanish fried dough with rich hot chocolate", origin: "europe" },
+            { img: "Brigadeiro.jpg", desc: "Brazilian chocolate fudge balls with condensed milk", origin: "amerique" },
+            { img: "Qatayef.jpg", desc: "Stuffed Middle Eastern pancakes with cream or nuts", origin: "asie" },
+            { img: "Tres Leches Cake.jpeg", desc: "Sponge cake soaked in three kinds of milk", origin: "amerique" },
+            { img: "Cheesecake au fruit de la passion.jpg", desc: "Tropical passion fruit cheesecake", origin: "amerique" },
+            { img: "Tarte à la mangue et noix de coco.webp", desc: "Mango and coconut tropical tart", origin: "amerique" },
+            { img: "Cassava Cake.jpg", desc: "Filipino cassava and coconut milk cake", origin: "asie" },
+            { img: "Lamingtons.jpg", desc: "Australian sponge cake coated with chocolate and coconut", origin: "europe" },
+            { img: "Tapioca au lait de coco et mangue.jpg", desc: "Tapioca pearls with coconut milk and mango", origin: "asie" },
+            { img: "Flan antillais au caramel.webp", desc: "Creamy Caribbean rum flan with caramel", origin: "amerique" },
+        ];
+
+        function renderMenu(origin = "all") {
+            const grid = document.getElementById("menuGrid");
+            grid.innerHTML = "";
+            items.forEach(item => {
+                if (origin === "all" || item.origin === origin) {
+                    const div = document.createElement("div");
+                    div.className = "menu-item";
+                    div.innerHTML = `
+                        <img src="${item.img}" alt="${item.desc}">
+                        <div class="menu-description">${item.desc}</div>
+                    `;
+                    grid.appendChild(div);
+                }
+            });
+        }
+
+        function filterMenu() {
+            const selected = document.getElementById("originFilter").value;
+            renderMenu(selected);
+        }
+
+        window.onload = () => renderMenu();
+    </script>
+</body>
+</html>

@@ -50,6 +50,27 @@
         .order-item button:hover {
             background-color: #e66541;
         }
+
+        .instructions {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #fffbe6;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .instructions h2 {
+            color: #ff7b54;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -78,11 +99,22 @@
     </div>
 
     <main>
+        <section class="instructions">
+            <h2>How to Order</h2>
+            <ol>
+                <li>Browse the items and click <strong>"Add to Cart"</strong> to select your favorite pastries.</li>
+                <li>Click on <strong>"My Order(s)"</strong> to review your cart.</li>
+                <li>Fill in your contact and delivery details.</li>
+                <li>Complete your order by making a secure payment.</li>
+                <li>Receive a confirmation email and get ready to enjoy your treats!</li>
+            </ol>
+        </section>
+
         <section class="order">
             <h1>Place Your Order</h1>
             <div class="order-grid">
 
-                <!-- Repeat this block for each menu item -->
+                <!-- Sample order items -->
                 <div class="order-item">
                     <img src="Pasteís de Nata.png" alt="Pasteís de Nata">
                     <h3>Pasteís de Nata</h3>
@@ -172,6 +204,7 @@
                     <h3>Flan antillais au caramel</h3>
                     <button>Add to Cart</button>
                 </div>
+
 
             </div>
         </section>
