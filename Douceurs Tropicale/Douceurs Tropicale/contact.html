@@ -17,6 +17,53 @@
       background-color: #7f1d1d;
     }
   </style>
+
+    <style>
+        .order-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .order-item {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+
+        .order-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .order-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .order-item button {
+            padding: 8px 12px;
+            background-color: #ff7b54;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .order-item button:hover {
+            background-color: #e66541;
+        }
+    </style>
 </head>
 <body class="bg-white">
      <div class="navbar">
